@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import Heading from './components/Heading';
+import Heading from './src/components/Heading';
 
 const App = () => {
   const [inputValue, setInputValue] = useState('');
