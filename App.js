@@ -1,12 +1,35 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import Button from './src/components/Button';
 import Heading from './src/components/Heading';
 import TextInput from './src/components/TextInput';
+
+let todoIndex = 0;
 
 const App = () => {
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
   const [type, setType] = useState('All');
+
+  const submitTodo = () => {
+    if (inputValue.trim().length === 0) {
+      console.warn('TextInput: inputValue is empty');
+      return;
+    }
+
+    const todo = {
+      id: todoIndex,
+      title: inputValue,
+      complete: false,
+    };
+
+    todoIndex += 1;
+
+    setTodos([...todos, todo]);
+    setInputValue('');
+
+    console.log(`Successfully added todo: ${todo} ${JSON.stringify(todo)}`);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -17,6 +40,7 @@ const App = () => {
             inputValue={inputValue}
             onChange={value => setInputValue(value)}
           />
+          <Button onSubmit={submitTodo} />
         </View>
       </ScrollView>
     </SafeAreaView>
