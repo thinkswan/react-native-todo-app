@@ -1,9 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import TodoButton from './TodoButton';
 
-const Todo = ({ todo: { title } }) => (
+const Todo = ({
+  todo: { id, title, complete },
+  toggleComplete,
+  deleteTodo,
+}) => (
   <View style={styles.todoContainer}>
     <Text style={styles.todoText}>{title}</Text>
+
+    <View style={styles.buttons}>
+      <TodoButton
+        name="Done"
+        complete={complete}
+        onPress={() => toggleComplete(id)}
+      />
+      <TodoButton name="Delete" onPress={() => deleteTodo(id)} />
+    </View>
   </View>
 );
 
@@ -28,6 +42,12 @@ const styles = StyleSheet.create({
   },
   todoText: {
     fontSize: 17,
+  },
+  buttons: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });
 

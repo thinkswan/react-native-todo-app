@@ -29,7 +29,21 @@ const App = () => {
     setTodos([...todos, todo]);
     setInputValue('');
 
-    console.log(`Successfully added todo: ${todo} ${JSON.stringify(todo)}`);
+    console.log(`Successfully added todo: ${JSON.stringify(todo)}`);
+  };
+
+  const deleteTodo = id => setTodos(todos.filter(todo => todo.id !== id));
+
+  const toggleComplete = id => {
+    setTodos(
+      todos.map(todo => {
+        if (todo.id === id) {
+          todo.complete = !todo.complete;
+        }
+
+        return todo;
+      }),
+    );
   };
 
   return (
@@ -41,7 +55,11 @@ const App = () => {
             inputValue={inputValue}
             onChange={value => setInputValue(value)}
           />
-          <TodoList todos={todos} />
+          <TodoList
+            todos={todos}
+            toggleComplete={toggleComplete}
+            deleteTodo={deleteTodo}
+          />
           <Button onSubmit={submitTodo} />
         </View>
       </ScrollView>
