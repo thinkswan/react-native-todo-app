@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Button from './src/components/Button';
 import Heading from './src/components/Heading';
+import TabBar from './src/components/TabBar';
 import TextInput from './src/components/TextInput';
 import TodoList from './src/components/TodoList';
 
@@ -56,6 +57,7 @@ const App = () => {
             onChange={value => setInputValue(value)}
           />
           <TodoList
+            type={type}
             todos={todos}
             toggleComplete={toggleComplete}
             deleteTodo={deleteTodo}
@@ -63,6 +65,8 @@ const App = () => {
           <Button onSubmit={submitTodo} />
         </View>
       </ScrollView>
+
+      <TabBar type={type} setType={setType} />
     </SafeAreaView>
   );
 };
