@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Button from './src/components/Button';
 import Heading from './src/components/Heading';
 import TextInput from './src/components/TextInput';
+import TodoList from './src/components/TodoList';
 
 let todoIndex = 0;
 
@@ -40,6 +41,7 @@ const App = () => {
             inputValue={inputValue}
             onChange={value => setInputValue(value)}
           />
+          <TodoList todos={todos} />
           <Button onSubmit={submitTodo} />
         </View>
       </ScrollView>
