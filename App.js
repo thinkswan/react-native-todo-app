@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Heading from './src/components/Heading';
+import TextInput from './src/components/TextInput';
 
 const App = () => {
   const [inputValue, setInputValue] = useState('');
@@ -12,6 +13,10 @@ const App = () => {
       <ScrollView keyboardShouldPersistTaps="always" style={styles.content}>
         <View>
           <Heading />
+          <TextInput
+            inputValue={inputValue}
+            onChange={value => setInputValue(value)}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
