@@ -1,19 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, TouchableHighlight } from 'react-native';
 
-const TodoButton = ({ name, complete, onPress }) => (
+const TodoButton = ({ onPress, children }) => (
   <TouchableHighlight
     style={styles.button}
     underlayColor="#efefef"
     onPress={onPress}>
-    <Text
-      style={[
-        styles.text,
-        complete ? styles.complete : null,
-        name === 'Delete' ? styles.delete : null,
-      ]}>
-      {name}
-    </Text>
+    {children}
   </TouchableHighlight>
 );
 
@@ -25,16 +18,6 @@ const styles = StyleSheet.create({
     borderColor: '#ededed',
     borderWidth: 1,
     borderRadius: 4,
-  },
-  text: {
-    color: '#666',
-  },
-  complete: {
-    fontWeight: 'bold',
-    color: 'green',
-  },
-  delete: {
-    color: 'rgba(175,47,47, 1)',
   },
 });
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import TodoButton from './TodoButton';
+import DeleteButton from './DeleteButton';
+import DoneButton from './DoneButton';
 
 const Todo = ({
   todo: { id, title, complete },
@@ -11,12 +12,11 @@ const Todo = ({
     <Text style={styles.todoText}>{title}</Text>
 
     <View style={styles.buttons}>
-      <TodoButton
-        name="Done"
+      <DoneButton
         complete={complete}
-        onPress={() => toggleComplete(id)}
+        toggleComplete={() => toggleComplete(id)}
       />
-      <TodoButton name="Delete" onPress={() => deleteTodo(id)} />
+      <DeleteButton deleteTodo={() => deleteTodo(id)} />
     </View>
   </View>
 );
